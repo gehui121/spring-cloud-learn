@@ -45,3 +45,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+*.mvn/
+mvnw
+*.cmd
