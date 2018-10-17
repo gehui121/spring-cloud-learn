@@ -1,0 +1,18 @@
+server:
+  port: 1111
+eureka:
+  instance:
+    hostname: localhost
+  client:
+  #是否将自己作为服务注册到其他Eureka服务注册中心（单节点无需配置启用）
+    register-with-eureka: false
+    #是否从其他Eureka注册中心同步服务列表（单节点无需配置启用）.
+    fetch-registry: false
+    service-url:
+    #是否从其他Eureka注册中心同步服务列表（单节点无需配置启用）.
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/Eureka/
+spring:
+  application:
+  #服务名称
+    name: spring-cloud-eureka-server
+
