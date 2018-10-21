@@ -1,0 +1,15 @@
+server:
+  port: 20001
+spring:
+  application:
+    name: hello-service
+eureka:
+  instance:
+    prefer-ip-address: true
+    ##自定义实例编号
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+  client:
+    service-url:
+    #添加注册服务时安全信息认证api是Eureka Server中配置的用户名，node是密码，@后面的是是Eureka Server地址
+      defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+

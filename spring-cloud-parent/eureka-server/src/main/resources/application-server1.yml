@@ -1,0 +1,29 @@
+server:
+  port: 10001
+##服务名称
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: api
+      password: node
+      roles: SERVICE_NODE
+eureka:
+  instance:
+    ##服务实例名称
+    hostname: server1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}@project.version@
+  client:
+    service-url:
+    ##注册中心地址   在实战环境中建议把Eureka Server节点放在不同的服务器下，并且通过主机名或者内网方式进行相互注册。
+      defaultZone: http://server2:10002/eureka/
+  server:
+  ##集群节点之间读取超时时间，单位：毫秒
+    peer-node-read-timeout-ms: 1000
+
+    ##是否将自己作为服务注册到注册中心(高可用是默认为true)
+    #register-with-eureka: false
+    ##是否校验服务存在
+    #fetch-registry: false
