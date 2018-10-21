@@ -8,3 +8,9 @@
 	current-memory-usage：当前占用的内存总量
 	Instances currently registered with Eureka：注册到该中心的服务列表
 	ipAddr：当前Eureka Server的IP地址，如果没有配置eureka.instance.ip-address那么这里使用默认的IP地址。
+	
+	高可用启动EurekaServer
+		java -jar sssxxxx.jar --spring.profiles.active=server1
+	启动jar包指定端口
+		java -jar xxxx.jar --server.port=20000
+		
