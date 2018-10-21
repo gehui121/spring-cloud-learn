@@ -70,4 +70,5 @@ public class HelloCustomerController {
         logger.info("通过动态获取提供者服务实例获调用服务响应的内容：{}", response);
         return response;
     }
+
 }

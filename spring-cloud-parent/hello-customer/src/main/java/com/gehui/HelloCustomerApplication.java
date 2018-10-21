@@ -13,7 +13,7 @@ public class HelloCustomerApplication {
 
     /**
      * @Bean 实例化restTemplate实例，用于发送Http请求，
-     * @LoadBalanced 用于支持客户端负载均衡，通过实例名进行发送请求的
+     * @LoadBalanced 依赖ribbo用于支持客户端负载均衡，通过实例名进行发送请求的，否则报错xxxmember
      * @return
      */
     @Bean

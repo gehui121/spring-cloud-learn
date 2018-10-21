@@ -14,3 +14,18 @@
 	启动jar包指定端口
 		java -jar xxxx.jar --server.port=20000
 		
+自我保护机制：
+	本地开发环境建议关闭Eureka自我保护机制
+	eureka.server.enable-self-preservation=false
+	生产环境建议开启Eureka自我保护机制(默认开启)
+	
+如果服务真的宕机
+	解决办法：本地调用应该设置重试机制，保证接口网络延迟幂等性，开启一些服务的降级功能，不能一直调不通的服务
+	
+第二章：SpringCloud整合Zookeeper作为注册中心
+	@EnableDiscoveryClient 作用是使用于consul、zookeeper作为注册中心，用于发现与消费服务
+	@EnableEurekaClient 是默认的Eureka作为注册中心
+	Zookeeper是临时节点类型，
+	
+	
+		

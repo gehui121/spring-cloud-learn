@@ -8,6 +8,11 @@ eureka:
     prefer-ip-address: true
     #自定义实例编号
     instance-id: ${spring.application.name}:${server.port}:@project.version@
+    ##心跳检测与续约时间，可以将时间设置小些，保证服务不可用时及时剔除掉
+    ##客户端向注册中心发送心跳检测时间间隔，单位：秒
+    lease-renewal-interval-in-seconds: 1
+    ##服务端在收到最后一次心跳之后等待的时间，也就是服务时效时间，单位：秒
+    lease-expiration-duration-in-seconds: 2
   client:
     service-url:
     #添加注册服务时安全信息认证api是Eureka Server中配置的用户名，node是密码，@后面的是是Eureka Server地址

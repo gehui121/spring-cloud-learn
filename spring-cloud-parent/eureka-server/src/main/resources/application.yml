@@ -21,3 +21,6 @@ eureka:
     register-with-eureka: false
     ##是否校验服务存在
     fetch-registry: false
+  server:
+  ##关闭自我保护机制，保证不可用服务及时被剔除掉
+    enable-self-preservation: false
