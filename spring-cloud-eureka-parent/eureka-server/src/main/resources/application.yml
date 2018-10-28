@@ -1,0 +1,26 @@
+server:
+  port: 10000
+##服务名称
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: api
+      password: node
+      roles: SERVICE_NODE
+eureka:
+  instance:
+    ##服务实例名称
+    hostname: server
+  client:
+    service-url:
+    ##注册中心地址
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      ##是否将自己作为服务注册到注册中心
+    register-with-eureka: false
+    ##是否校验服务存在
+    fetch-registry: false
+  server:
+  ##关闭自我保护机制，保证不可用服务及时被剔除掉
+    enable-self-preservation: false
