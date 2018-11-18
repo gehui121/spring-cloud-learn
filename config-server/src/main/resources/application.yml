@@ -1,0 +1,31 @@
+server:
+  port: 40001
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+        #config-server的git地址
+          uri: https://github.com/gehui121/gkconfig.git
+          #配置文件目录，-可以配置多个，用户名和密码
+          search-paths:
+          - gkconfig
+          #默认的分支
+      label: master
+eureka:
+  instance:
+  #使用ip注册
+    prefer-ip-address: true
+    #自定义实例编号
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    #客户端向注册中心发送心跳检测时间间隔：秒
+    lease-renewal-interval-in-seconds: 30
+    #客户端失效时间
+    lease-expiration-duration-in-seconds: 90
+  client:
+      service-url:
+        defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+
+

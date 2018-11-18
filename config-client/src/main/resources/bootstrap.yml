@@ -1,0 +1,33 @@
+server:
+  port: 30003
+spring:
+  application:
+    name: config_client
+  cloud:
+    config:
+    #读取的版本环境
+      profile: dev
+      discovery:
+      #读取config-server环境
+        service-id: config-server
+        #开启读取权限
+        enabled: true
+eureka:
+  instance:
+  #使用ip注册
+    prefer-ip-address: true
+    #自定义实例编号
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    #客户端向注册中心发送心跳检测时间间隔：秒
+    lease-renewal-interval-in-seconds: 30
+    #客户端失效时间
+    lease-expiration-duration-in-seconds: 90
+  client:
+      service-url:
+        defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+#开启actuator所有的检测端点，实时刷新配置文件
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
