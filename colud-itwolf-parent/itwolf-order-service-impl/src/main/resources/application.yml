@@ -1,0 +1,37 @@
+server:
+  port: 30001
+  #tomcat的最大线程数
+  tomcat:
+    max-threads: 5
+spring:
+  application:
+    name: order-service
+eureka:
+  instance:
+  ##使用ip注册
+    prefer-ip-address: true
+    ##自定义实例编号
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    ##客户端向注册中心发送心跳检测时间间隔
+    lease-renewal-interval-in-seconds: 30
+    ##客户端失效时间
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      ##注册地址api为eureka-server账号，node为密码
+      defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 5000
+#请求连接的超时时间
+  ConnectTimeout: 5000
+##开启Hystrix短路器
+feign:
+  hystrix:
+    enabled: true
+
+#1.默认：（方法上记得要加上@HystrixCommand，否则无效）：
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+
+#2.配置具体方法的超时时间
+#hystrix.command.serverMethod.execution.isolation.thread.timeoutInMilliseconds=3000
