@@ -82,13 +82,22 @@
 				在生产者、消费者中均制定requestMapping，并且使用@PathVariable接收参数 ，可以不写value
 				
 		服务雪崩效应：默认情况下，tomcat只有一个线程池处理客户端的所有请求这样的话在高并发下，如果客户端所有的请求堆积到同一个服务接口上，
-					就会产生tomcat 的所有线程池去处理该服务接口，可能会导致其他服务接口无法访问。
+					就会产生tomcat 的所有线程去处理该服务接口，可能会导致其他服务接口无法访问。
 					tomcat 有个线程池，每个线程去处理客户端发送的每次请求
 					
+					服务降级使用fallback返回类型必须与接口类型一致
+					
 		
-		
-		
-		
+		spring-cloud config
+			git环境上文件命名规则：
+				/{application.name}-dev.properties/(yml)
+				/{application.name}-prd.properties/(yml)
+			config-client 的应用名称为：application.name，必须与git上的文件名称一致
+			使用手动刷新配置文件，依赖中添加actuator
+			步骤：先post请求http://localhost:30003/actuator/refresh
+				2.config-client请求为修改后的配置信息
+				
+			
 		
 		
 		

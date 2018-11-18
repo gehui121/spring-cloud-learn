@@ -35,4 +35,29 @@ public class RefactorUserController implements IUserService {
         userEntity.setServerPort(serverPort);
         return userEntity;
     }
+
+    /**
+     * 没有使用Hystrix，验证服务雪崩效应，服务可以快速反应没有延迟
+     * @return
+     */
+    @RequestMapping(value = "/getUserInfo")
+    @Override
+    public String getUserInfo() {
+        return "消费者调用生产者成功，快速响应验证服务雪崩"+serverPort;
+    }
+
+    /**
+     * 没有使用Hystrix，验证服务雪崩效应，服务延迟2秒
+     * @return
+     */
+    @RequestMapping(value = "/customerToUserInfo")
+    @Override
+    public String customerToUserInfo() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "消费者调用生产者成功，延迟2秒后验证服务雪崩"+serverPort;
+    }
 }

@@ -17,3 +17,8 @@ eureka:
     service-url:
       ##注册地址api为eureka-server账号，node为密码
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 120000
+#请求连接的超时时间
+  ConnectTimeout: 30000

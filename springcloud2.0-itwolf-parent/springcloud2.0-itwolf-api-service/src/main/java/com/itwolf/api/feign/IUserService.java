@@ -20,4 +20,18 @@ public interface IUserService {
      */
     @RequestMapping(value = "/getUserByNameAndAge/{name},{age}")
     public UserEntity getUserByNameAndAge(@PathVariable(value = "name") String name,@PathVariable(value = "age") Integer age);
+
+    /**
+     * 没有使用Hystrix证明服务雪崩效应，可以快速反应，
+     * @return
+     */
+    @RequestMapping(value = "/getUserInfo")
+    public String getUserInfo();
+
+    /**
+     * 没有使用Hystrix证明服务雪崩效应，延迟2秒后反应，
+     * @return
+     */
+    @RequestMapping(value = "/customerToUserInfo")
+    public String customerToUserInfo();
 }
