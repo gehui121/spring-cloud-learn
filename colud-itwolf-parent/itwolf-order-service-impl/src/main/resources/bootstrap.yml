@@ -6,6 +6,15 @@ server:
 spring:
   application:
     name: order-service
+  cloud:
+    config:
+    #读取的版本环境
+      profile: dev
+      discovery:
+      #读取config-server环境
+        service-id: config-server
+        #开启读取权限
+        enabled: true
 eureka:
   instance:
   ##使用ip注册
@@ -35,3 +44,10 @@ hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
 
 #2.配置具体方法的超时时间
 #hystrix.command.serverMethod.execution.isolation.thread.timeoutInMilliseconds=3000
+#开启actuator所有的检测端点，实时刷新配置文件
+#开启actuator所有的检测端点，实时刷新配置文件
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

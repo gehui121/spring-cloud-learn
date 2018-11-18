@@ -90,12 +90,13 @@
 		
 		spring-cloud config
 			git环境上文件命名规则：
-				/{application.name}-dev.properties/(yml)
-				/{application.name}-prd.properties/(yml)
+				/{application.name}-dev.properties/git上只能用properties，yml获取不到配置信息
+				/{application.name}-prd.properties/
 			config-client 的应用名称为：application.name，必须与git上的文件名称一致
 			使用手动刷新配置文件，依赖中添加actuator
 			步骤：先post请求http://localhost:30003/actuator/refresh
 				2.config-client请求为修改后的配置信息
+				注意：项目中配置文件只能命名bootstrap.yml，application.yml启动报错 
 				
 			
 		
