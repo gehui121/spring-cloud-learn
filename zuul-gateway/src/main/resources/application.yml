@@ -1,0 +1,32 @@
+server:
+  port: 50000
+spring:
+  application:
+    name: zuul-gateway
+eureka:
+  instance:
+  ##使用ip注册
+    prefer-ip-address: true
+    ##自定义实例编号
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    ##客户端向注册中心发送心跳检测时间间隔
+    lease-renewal-interval-in-seconds: 30
+    ##客户端失效时间
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      ##注册地址api为eureka-server账号，node为密码
+      defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+zuul:
+  routes:
+  #定义转发服务规则
+    api-a:
+    #当客户端发送127.0.0.1:50000/api-member/开头的请求都会转发到会员服务
+      path: /api-member/**
+      #服务别名，zuul网关默认整合ribbon 自动实现负载均衡轮训策略
+      serviceId: member-service
+    api-b:
+    #当客户端发送api-order开头的请求会转发到订单服务上
+      path: /api-order/**
+      #订单服务别名
+      serviceId: order-service
