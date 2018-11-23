@@ -5,16 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by Administrator on 2018/10/29 17:46.
+ * Created by Administrator on 2018/11/21 15:16.
  **/
 @RestController
-public class HelloController{
+public class IndexController {
 
     @Value("${server.port}")
     private String serverPort;
 
-    @RequestMapping(value = "/hello")
-    public String hello() {
-        return "hello,我是订单服务，请求端口号是： " + serverPort;
+    @RequestMapping(value = "/")
+    public String index() {
+        return "我是订单系统，端口号是：" + serverPort;
     }
 }

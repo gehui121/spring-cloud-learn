@@ -20,6 +20,13 @@ public class BaseApiService {
     }
 
     //调用接口成功，没有返回值
+    public ResponseBase setResult(String msg){
+        Map<String,String> header = new HashMap<>();
+        header.put("code","200");
+        header.put("msg",msg);
+        return new ResponseBase(header,null);
+    }
+    //调用接口成功，没有返回值
     public ResponseBase setResult(){
         Map<String,String> header = new HashMap<>();
         header.put("code","200");

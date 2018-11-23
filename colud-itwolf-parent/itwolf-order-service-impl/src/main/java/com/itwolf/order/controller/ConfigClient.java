@@ -19,6 +19,6 @@ public class ConfigClient extends BaseApiService {
 
     @RequestMapping(value = "/getItwolf")
     public ResponseBase getItwolf(){
-        return setFailedResult(itwolf);
+        return setResult(itwolf);
     }
 }

@@ -90,7 +90,7 @@
 		
 		spring-cloud config
 			git环境上文件命名规则：
-				/{application.name}-dev.properties/git上只能用properties，yml获取不到配置信息
+				/{application.name}-dev.properties/ 
 				/{application.name}-prd.properties/
 			config-client 的应用名称为：application.name，必须与git上的文件名称一致
 			使用手动刷新配置文件，依赖中添加actuator
@@ -129,6 +129,8 @@
 			 Nginx比Zuul的实现功能更加强大，因为Nginx可以整合一些脚本语言，（Nginx+Lua），Nginx适合服务器端的负载均衡
 			 Zuul适合微服务中实现网关，
 			 最好建议Nginx+Zuul实现网关，Nginx作用实现反向代理，Zuul对微服务实现网关拦截，比如对黑名单白名单控制。
+			 为什么不用Nginx实现网关呢？
+				因为微服务网关是针对整个服务实现统一请求拦截，网关基本上都是采用自己熟悉的语言开发的，方便易学。
 			 
 			 网关服务，订单服务，会员服务都是在同一个局域网内
 			 

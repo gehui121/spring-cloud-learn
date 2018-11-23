@@ -1,4 +1,4 @@
-package com.itwolf.controller;
+package com.itwolf.api.controller;
 
 import com.itwolf.api.entity.UserEntity;
 import com.itwolf.api.service.IUserService;

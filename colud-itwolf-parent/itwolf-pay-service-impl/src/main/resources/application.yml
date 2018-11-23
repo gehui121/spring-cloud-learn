@@ -1,0 +1,23 @@
+server:
+  port: 30004
+spring:
+  application:
+    name: pay-service
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    lease-renewal-interval-in-seconds: 30
+    lease-expiration-duration-in-seconds: 90
+  client:
+    service-url:
+      defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 5000
+#请求连接的超时时间
+  ConnectTimeout: 5000
+##开启Hystrix短路器
+feign:
+  hystrix:
+    enabled: true

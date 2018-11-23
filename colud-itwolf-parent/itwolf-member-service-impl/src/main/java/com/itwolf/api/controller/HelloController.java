@@ -1,7 +1,6 @@
-package com.itwolf.controller;
+package com.itwolf.api.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,9 +13,9 @@ public class HelloController {
     @Value("${server.port}")
     private String serverPort;
 
-    @RequestMapping(value = "/hello/{name}")
-    public String hello(@PathVariable String name){
-        return "hello：  " + name  + "服务端口号： " + serverPort;
+    @RequestMapping(value = "/hello")
+    public String hello(){
+        return "hello,我是会员服务，请求端口号是： " + serverPort;
     }
 
 }
