@@ -136,8 +136,12 @@ java -jar eureka-server.jar --spring.profiles.active=server1
 			 
 			 网关服务，订单服务，会员服务都是在同一个局域网内
 			 
-		
-		
+		swagger
+		微服务接口时，如果是get请求使用GetMapping
+					  如果是post请求使用postMapping
+					  不建议使用requestMapping因为生成的swagger文档时支持很多种请求方式。
+		ui界面路径
+		http://localhost:60001/swagger-ui.html
 		
 		
 		
