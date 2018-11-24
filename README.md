@@ -141,6 +141,7 @@ java -jar eureka-server.jar --spring.profiles.active=server1
 					  如果是post请求使用postMapping
 					  不建议使用requestMapping因为生成的swagger文档时支持很多种请求方式。
 		ui界面路径
+		http://gw.itwolf.com/swagger-ui.html
 		http://localhost:60001/swagger-ui.html
 		
 		

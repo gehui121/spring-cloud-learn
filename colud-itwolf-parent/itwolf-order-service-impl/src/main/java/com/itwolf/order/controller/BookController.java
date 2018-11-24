@@ -7,7 +7,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -22,7 +22,7 @@ public class BookController extends BaseApiService {
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @HystrixCommand(fallbackMethod = "getBookInfoFallback")
-    @RequestMapping(value = "/getBookInfo")
+    @GetMapping(value = "/getBookInfo")
     public ResponseBase getBookInfo(){
         logger.info("getBookInfo当前线程是：{}",Thread.currentThread().getName());
         ResponseBase reponse = bookFeign.getBookInfo();
@@ -40,7 +40,7 @@ public class BookController extends BaseApiService {
      * 使用类的方式进行服务降级，
      * @return
      */
-    @RequestMapping(value = "/getBookInfoHystrix")
+    @GetMapping(value = "/getBookInfoHystrix")
     public ResponseBase getBookInfoHystrix(){
         logger.info("getBookInfoHystrix当前线程是：{}",Thread.currentThread().getName());
         ResponseBase reponse = bookFeign.getBookInfo();

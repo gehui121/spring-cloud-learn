@@ -17,3 +17,5 @@ eureka:
     service-url:
       ##注册地址api为eureka-server账号，node为密码
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
+swagger:
+  base-package: com.itwolf.api

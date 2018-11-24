@@ -4,7 +4,7 @@ import com.itwolf.base.BaseApiService;
 import com.itwolf.base.ResponseBase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,7 +17,7 @@ public class ConfigClient extends BaseApiService {
     @Value("${itwolf}")
     private String itwolf;
 
-    @RequestMapping(value = "/getItwolf")
+    @GetMapping(value = "/getItwolf")
     public ResponseBase getItwolf(){
         return setResult(itwolf);
     }

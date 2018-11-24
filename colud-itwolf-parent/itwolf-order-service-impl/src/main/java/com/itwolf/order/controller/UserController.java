@@ -7,9 +7,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by Administrator on 2018/10/30 17:12.
@@ -26,7 +24,7 @@ public class UserController {
      * @param name
      * @return
      */
-    @RequestMapping(value = "/getUserInfo/{name},{age}")
+    @PostMapping(value = "/getUserInfo/{name},{age}")
     public UserEntity getUserInfo(@PathVariable String name, @PathVariable Integer age){
         logger.info("验证服务雪崩，没用Hystrix，服务没延迟，当前线程是：{}",Thread.currentThread().getName());
         UserEntity response = userFeign.getUserInfo(name, age);
@@ -37,7 +35,7 @@ public class UserController {
      * 验证服务雪崩，没用Hystrix，没有解决服务雪崩效应，服务延迟2秒
      * @return
      */
-    @RequestMapping(value = "/orderToUserInfo")
+    @GetMapping(value = "/orderToUserInfo")
     public String orderToUserInfo(){
         logger.info("没用Hystrix，服务延迟2秒，orderToUserInfo当前线程是：{}",Thread.currentThread().getName());
         String response = userFeign.orderToUserInfo();
@@ -48,7 +46,7 @@ public class UserController {
     使用Hystrix解决服务雪崩效应,调用的都是生产者延迟2秒的服务
      */
     @HystrixCommand(fallbackMethod = "orderToUserInfoFallback")
-    @RequestMapping(value = "/orderToUserInfoHystrix")
+    @GetMapping(value = "/orderToUserInfoHystrix")
     public String orderToUserInfoHystrix(){
         logger.info("使用Hystrix解决服务雪崩 orderToUserInfoHystrix当前线程是：{}",Thread.currentThread().getName());
         String response = userFeign.orderToUserInfo();
@@ -63,14 +61,14 @@ public class UserController {
         return "返回友好的提示：服务器忙，请重试";
     }
 
-    @RequestMapping(value = "/orderInfo")
+    @GetMapping(value = "/orderInfo")
     public String orderInfo(){
         logger.info("orderInfo当前线程是：{}",Thread.currentThread().getName());
         return "调用成功";
     }
 
     //测试服务接口统一响应
-    @RequestMapping(value = "/testResponse")
+    @GetMapping(value = "/testResponse")
     public ResponseBase testResponse(){
         ResponseBase responseBase = userFeign.testResponse();
         return responseBase;

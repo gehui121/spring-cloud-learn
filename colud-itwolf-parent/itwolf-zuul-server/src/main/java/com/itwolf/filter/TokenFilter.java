@@ -7,7 +7,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Administrator on 2018/11/22 14:53.
  * 网关过滤器
  **/
-@Component
+//@Component
 public class TokenFilter extends ZuulFilter {
 
     private static final Logger logger = LoggerFactory.getLogger(TokenFilter.class);

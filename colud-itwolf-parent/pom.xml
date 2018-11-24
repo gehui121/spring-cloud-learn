@@ -32,6 +32,7 @@
         <java.version>1.8</java.version>
         <!--SpringCloud最新稳定版本-->
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+        <swagger.version>1.7.0.RELEASE</swagger.version>
     </properties>
 
     <!--加入微服务spring cloud依赖管理dependencyManagement子项目可以选择引用-->
@@ -100,6 +101,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!--spring-boot整合swagger2-->
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>${swagger.version}</version>
         </dependency>
     </dependencies>
 
