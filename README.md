@@ -1,3 +1,5 @@
+
+java -jar eureka-server.jar --spring.profiles.active=server1
 第一章：搭建Eureka服务注册中心
 	spring.application.name：服务名称
 	server.port：服务端口号
