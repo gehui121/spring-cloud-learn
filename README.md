@@ -142,7 +142,15 @@ java -jar eureka-server.jar --spring.profiles.active=server1
 					  不建议使用requestMapping因为生成的swagger文档时支持很多种请求方式。
 		ui界面路径
 		http://gw.itwolf.com/swagger-ui.html
-		http://localhost:60001/swagger-ui.html
+		http://localhost:50000/swagger-ui.html
+		
+		ELK开源实时日志分析平台：Elasticsearch、Logstash、Kiabana
+			Elasticsearch：承担存储和分析功能，具有分布式、零配置、自动发现、索引自动分片、副本机制及自动搜索负载等特点。
+			Logstash：负责收集数据和进行简单数据处理，并将采集的数据输出给ElasticSearch，通过Logstash我们可以采集各微服务实例所生成的日志，
+			Kiabana:负责将Logstash所采集的日志，利用Elasticsearch进行搜索分析，通过友好的可视化界面，提供日志的可视化分析，搜索和报表统计等功能。
+		
+
+								
 		
 		
 		

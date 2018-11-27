@@ -33,6 +33,7 @@
         <!--SpringCloud最新稳定版本-->
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
         <swagger.version>1.7.0.RELEASE</swagger.version>
+        <logstash.version>4.11</logstash.version>
     </properties>
 
     <!--加入微服务spring cloud依赖管理dependencyManagement子项目可以选择引用-->
@@ -108,6 +109,19 @@
             <groupId>com.spring4all</groupId>
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>${swagger.version}</version>
+        </dependency>
+
+        <!--spring cloud Sleuth 服务链路跟踪依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
+        </dependency>
+
+        <!--集成Logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.version}</version>
         </dependency>
     </dependencies>
 
