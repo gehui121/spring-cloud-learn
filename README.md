@@ -99,7 +99,8 @@ java -jar eureka-server.jar --spring.profiles.active=server1
 			步骤：先post请求http://localhost:30003/actuator/refresh
 				2.config-client请求为修改后的配置信息
 				注意：项目中配置文件只能命名bootstrap.yml，application.yml启动报错 
-				
+			手动刷新：http://localhost:30004/actuator/refresh
+					如果集群需要每个微服务都需要刷新，
 			
 		1.网关 API Gateway (网关) --接口网关注意：接口没有界面
 			网关概念：相当于客户端请求统一先请求到网关服务器上，再由网关服务器转发到实际的服务地址上，类似于Nginx
@@ -150,7 +151,62 @@ java -jar eureka-server.jar --spring.profiles.active=server1
 			Kiabana:负责将Logstash所采集的日志，利用Elasticsearch进行搜索分析，通过友好的可视化界面，提供日志的可视化分析，搜索和报表统计等功能。
 		
 
-								
+		消息总线：（底层通过MQ实现的）其实通过消息中间件主题模式，他使用广播消息的机制被所有在注册中心注册的微服务实例进行监听和消费，以广播的形式将消息推送到注册中心的所有微服务列表
+			
+		
+		
+		spring-cloud-stream消息驱动：整合常用MQ的框架，rabbitMQ、kafka 让开发人员不需要具体指导MQ底层实现，只需要转注核心业务逻辑的实现即可，
+						底层实现：Stream组件对rabbitMQ和kafka，进行封装层同一个API，开发人员只需要对接Stream即可。
+			项目：stream-productor、stream-consumer
+			1.创建消息通道
+			   @Output("my_stream_channel")
+				SubscribableChannel sendMsg();
+			2.生产者投递消息
+			 Message build = MessageBuilder.withPayload(msg.getBytes()).build();
+			boolean flag = sendMessage.sendMsg().send(build);
+			3.开启绑定
+			@EnableBinding(ISendMessage.class)
+			
+			消费者：监听消息通道
+			//1.创建监听消息的通道
+			@Input("my_stream_channel")
+			SubscribableChannel sendMsg();
+			//2.接收消息
+			@StreamListener("my_stream_channel")
+			//3.绑定监听器
+			@EnableBinding(IReadMsg.class)//绑定监听器
+
+			rabbitMQ默认以通道名称创建交换机，消费者在启动的时候随机创建一个队列名称
+			激活rabbitMQ在命令行输入"D:\JAVA\Develop\rabbitMQ\RabbitMQ\rabbitmq_server-3.7.9\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
+			
+			命令行查看已有用户及用户的角色：
+			rabbitmqctl.bat list_users
+			
+			rabbitMQ服务访问路径：http://localhost:15672/
+			如果想改为kafka，只需要将依赖、application.yml中改为kafka即可
+			
+			consumer group 保证一条消息在同一个组中只用一个 消费者进行消费，轮训机制。如果消费者集群部分组，则会出现重复消费的情况
+server:
+  port: 10020
+spring:
+  application:
+    name: stream-consumer
+  cloud:
+    stream:
+      bindings:
+      #指定管道名称
+        my_stream_channel:
+        #指定应用实例属于stream消费组
+          group: stream
+		  
+		  
+		迁移kafka：
+		1.修改pom.xml,依赖该为kafka
+		2.修改application.xml 连接为kafka连接，默认是rabbitMQ
+		3.代码业务逻辑不变
+			
+		
+			
 		
 		
 		

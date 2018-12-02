@@ -1,0 +1,12 @@
+server:
+  port: 10020
+spring:
+  application:
+    name: stream-consumer
+  cloud:
+    stream:
+      bindings:
+      #指定管道名称
+        my_stream_channel:
+        #指定应用实例属于stream消费组
+          group: stream
