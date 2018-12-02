@@ -3,6 +3,13 @@ server:
 spring:
   application:
     name: member-service
+  cloud:
+    stream:
+      bindings:
+      #指定管道名称
+        my_money_channel:
+        #指定应用实例属于stream消费组
+          group: moneygroup
 eureka:
   instance:
   ##使用ip注册

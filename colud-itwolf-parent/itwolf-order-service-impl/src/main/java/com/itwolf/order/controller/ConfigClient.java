@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConfigClient extends BaseApiService {
 
-    @Value("${itwolf}")
+    @Value("${age}")
     private String itwolf;
 
     @GetMapping(value = "/getItwolf")

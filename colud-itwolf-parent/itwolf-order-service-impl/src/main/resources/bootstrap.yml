@@ -53,3 +53,5 @@ management:
         include: "*"
 swagger:
   base-package: com.itwolf.order
+#默认连接的是rabbitMQ，
+
