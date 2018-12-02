@@ -2,7 +2,16 @@ server:
   port: 30004
 spring:
   application:
-    name: pay-service
+    name: appConfig
+  cloud:
+    config:
+    #读取的版本环境
+      profile: dev
+      discovery:
+      #读取config-server环境
+        service-id: config-server
+        #开启读取权限
+        enabled: true
 eureka:
   instance:
     prefer-ip-address: true
@@ -21,3 +30,8 @@ ribbon:
 feign:
   hystrix:
     enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

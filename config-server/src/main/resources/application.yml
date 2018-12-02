@@ -8,10 +8,10 @@ spring:
       server:
         git:
         #config-server的git地址
-          uri: https://github.com/gehui121/gkconfig.git
+          uri: https://github.com/gehui121/config.git
           #配置文件目录，-可以配置多个，用户名和密码
           search-paths:
-          - gkconfig
+          - itwolfConfig
           #默认的分支
       label: master
 eureka:
