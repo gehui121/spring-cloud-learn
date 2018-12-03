@@ -8,16 +8,16 @@ spring:
     name: order-service
   cloud:
     config:
-    #读取的版本环境
+      #读取的版本环境
       profile: dev
       discovery:
-      #读取config-server环境
+        #读取config-server环境
         service-id: config-server
         #开启读取权限
         enabled: true
 eureka:
   instance:
-  ##使用ip注册
+    ##使用ip注册
     prefer-ip-address: true
     ##自定义实例编号
     instance-id: ${spring.application.name}:${server.port}:@project.version@
@@ -32,8 +32,17 @@ eureka:
 #请求处理的超时时间
 ribbon:
   ReadTimeout: 5000
-#请求连接的超时时间
-  ConnectTimeout: 5000config-server
+  #请求连接的超时时间
+  ConnectTimeout: 5000
+  #重试机制
+  #对第一次请求的服务的重试次数
+  MaxAutoRetries: 3
+  #要重试的下一个服务的最大数量，（不包括第一个服务）
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+  #开启饥饿加载，在启动时加载应用的上下文
+  eager-load:
+    enabled: true
 ##开启Hystrix短路器
 feign:
   hystrix:
