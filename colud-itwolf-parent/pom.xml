@@ -17,6 +17,7 @@
         <module>itwolf-common</module>
         <module>itwolf-zuul-server</module>
         <module>itwolf-pay-service-impl</module>
+        <module>itwolf-hystrix-dashboard</module>
     </modules>
 
     <parent>
@@ -130,6 +131,13 @@
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
             <version>2.0.2.RELEASE</version>
         </dependency>
+
+        <!--整合Hystrix Dashboard -->
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>-->
+
     </dependencies>
 
 

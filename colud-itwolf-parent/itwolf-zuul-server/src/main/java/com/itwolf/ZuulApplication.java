@@ -23,6 +23,7 @@ import java.util.List;
 @EnableEurekaClient
 @EnableZuulProxy
 @EnableSwagger2
+
 public class ZuulApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZuulApplication.class);

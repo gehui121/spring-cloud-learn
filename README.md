@@ -223,5 +223,58 @@ Hystrix是一个延迟和容错库，隔离远程系统、服务和第三方库�
 		3.快速失败和迅速恢复
 		4.在合理的情况下回退和优雅降级
 		5.开启近实时监控，告警和操作控制
+		
+Hystrix Dashboard 
+	访问路径：http://localhost:9010/hystrix
+		监控：http://localhost:30001/actuator/hystrix.stream
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 		
