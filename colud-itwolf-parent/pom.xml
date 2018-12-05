@@ -18,6 +18,7 @@
         <module>itwolf-zuul-server</module>
         <module>itwolf-pay-service-impl</module>
         <module>itwolf-hystrix-dashboard</module>
+        <module>itwolf-turbine</module>
     </modules>
 
     <parent>

@@ -1,18 +1,14 @@
 server:
-  port: 20001
+  port: 9020
 spring:
   application:
-    name: member-service
-  cloud:
-    stream:
-      bindings:
-      #指定管道名称
-        my_money_channel:
-        #指定应用实例属于stream消费组
-          group: moneygroup
+    name: turbine-dashboard
+turbine:
+  app-config: order-service,member-service,appConfig
+  cluster-name-expression: "'default'"
 eureka:
   instance:
-  ##使用ip注册
+    ##使用ip注册
     prefer-ip-address: true
     ##自定义实例编号
     instance-id: ${spring.application.name}:${server.port}:@project.version@
@@ -24,10 +20,3 @@ eureka:
     service-url:
       ##注册地址api为eureka-server账号，node为密码
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
-swagger:
-  base-package: com.itwolf.api
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"

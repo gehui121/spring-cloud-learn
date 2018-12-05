@@ -228,7 +228,9 @@ Hystrix Dashboard
 	访问路径：http://localhost:9010/hystrix
 		监控：http://localhost:30001/actuator/hystrix.stream
 	
-
+Turbine：
+	访问路径：http://localhost:9020/hystrix
+	监控：http://localhost:9020/turbine.stream
 
 
 
