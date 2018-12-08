@@ -1,6 +1,5 @@
 package com.itwolf.stream.channel;
 
-import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.SubscribableChannel;
 
 /**
@@ -9,6 +8,6 @@ import org.springframework.messaging.SubscribableChannel;
 //创建生产者消息通道
 public interface IProducterChannel {
 
-    @Output("my_money_channel")
+//    @Output("my_money_channel")
     SubscribableChannel sendMsg();
 }

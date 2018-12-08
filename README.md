@@ -224,6 +224,8 @@ Hystrix是一个延迟和容错库，隔离远程系统、服务和第三方库�
 		4.在合理的情况下回退和优雅降级
 		5.开启近实时监控，告警和操作控制
 		
+-------------------将消息驱动注解注释掉了，监听日志太频繁------------		
+		
 Hystrix Dashboard 
 	访问路径：http://localhost:9010/hystrix
 		监控：http://localhost:30001/actuator/hystrix.stream
@@ -231,7 +233,7 @@ Hystrix Dashboard
 Turbine：
 	访问路径：http://localhost:9020/hystrix
 	监控：http://localhost:9020/turbine.stream
-
+	只有使用Feign客户端调用远程接口才能被检测到，
 
 
 

@@ -1,5 +1,8 @@
 server:
   port: 20001
+  #tomcat的最大线程数
+  tomcat:
+    max-threads: 5
 spring:
   application:
     name: member-service
@@ -8,11 +11,19 @@ spring:
       bindings:
       #指定管道名称
         my_money_channel:
-        #指定应用实例属于stream消费组
+        #指定应用实例属于stream消费组，防止同一消息重复消费
           group: moneygroup
+    config:
+      #读取的版本环境
+      profile: dev
+      discovery:
+        #读取config-server环境
+        service-id: config-server
+        #开启读取权限
+        enabled: true
 eureka:
   instance:
-  ##使用ip注册
+    ##使用ip注册
     prefer-ip-address: true
     ##自定义实例编号
     instance-id: ${spring.application.name}:${server.port}:@project.version@
@@ -24,10 +35,39 @@ eureka:
     service-url:
       ##注册地址api为eureka-server账号，node为密码
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
-swagger:
-  base-package: com.itwolf.api
+#请求处理的超时时间
+ribbon:
+  ReadTimeout: 5000
+  #请求连接的超时时间
+  ConnectTimeout: 5000
+  #重试机制
+  #对第一次请求的服务的重试次数
+  MaxAutoRetries: 3
+  #要重试的下一个服务的最大数量，（不包括第一个服务）
+  MaxAutoRetriesNextServer: 2
+  OkToRetryOnAllOperations: true
+  #开启饥饿加载，在启动时加载应用的上下文
+  eager-load:
+    enabled: true
+##开启Hystrix短路器
+feign:
+  hystrix:
+    enabled: true
+
+#1.默认：（方法上记得要加上@HystrixCommand，否则无效）：
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+
+#2.配置具体方法的超时时间
+#hystrix.command.serverMethod.execution.isolation.thread.timeoutInMilliseconds=3000
+
+#开启actuator所有的检测端点，实时刷新配置文件
+#开启actuator所有的检测端点，实时刷新配置文件
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+#生成API文档，扫描包
+swagger:
+  base-package: com.itwolf.api
+#默认连接的是rabbitMQ，
