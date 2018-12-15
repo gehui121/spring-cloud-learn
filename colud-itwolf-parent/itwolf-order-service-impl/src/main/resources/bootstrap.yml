@@ -31,9 +31,9 @@ eureka:
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
 #请求处理的超时时间
 ribbon:
-  ReadTimeout: 5000
+  ReadTimeout: 1500
   #请求连接的超时时间
-  ConnectTimeout: 5000
+  ConnectTimeout: 1500
   #重试机制
   #对第一次请求的服务的重试次数
   MaxAutoRetries: 3
@@ -50,6 +50,12 @@ feign:
 
 #1.默认：（方法上记得要加上@HystrixCommand，否则无效）：
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2000
+#Circuit Breaker 设置打开fallback并启动fallback逻辑的错误比率,默认50
+hystrix.command.default.circuitBreaker.errorThresholdPercentage: 50
+#线程隔离时，线程池核心大小.默认值10
+hystrix.threadpool.default.coreSize: 9
+#最大线程池大小
+hystrix.threadpool.default.masimumSize: 6
 
 #2.配置具体方法的超时时间
 #hystrix.command.serverMethod.execution.isolation.thread.timeoutInMilliseconds=3000

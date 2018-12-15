@@ -46,7 +46,7 @@ public class UserController extends BaseApiService implements IUserService {
     @Override
     public String orderToUserInfo() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

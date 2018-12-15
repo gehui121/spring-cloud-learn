@@ -31,9 +31,31 @@ ribbon:
   ReadTimeout: 5000
 #请求连接的超时时间
   ConnectTimeout: 5000
+  #同一个服务重试的次数（除去首次）
+  MaxAutoRetries: 2
+  #切换相同服务数量
+  MaxAutoRetriesNextServer: 2
 #开启actuator所有的检测端点，实时刷新配置文件
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+zuul:
+#开启失败后的重试机制，配合ribbon使用
+  retryable: true
+  #认证成功后重定向zuul的host，而不是认证服务器的host
+  add-host-header: true
+  routes:
+    order-service:
+      path: /api-order/**
+      serviceId: order-service
+    member-service:
+      path: /api-member/**
+      serviceId: member-service
+    pay-service:
+      path: /api-pay/**
+      serviceId: appConfig
+
+
+
