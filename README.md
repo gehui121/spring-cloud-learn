@@ -233,16 +233,32 @@ Hystrix Dashboard
 Turbine：
 	访问路径：http://localhost:9020/hystrix
 	监控：http://localhost:9020/turbine.stream
-	只有使用Feign客户端调用远程接口才能被检测到，
+	只有使用hystrix才能被检测到，
 
+HystrixBadRequestException这个异常是由非法参数或者非系统异常引起的，hystrix不会降级的，不会触发fallback，
+	在Feign Client 中可以使用ErrorDecoder实现对不触发fallback、这类异常的包装，在实际的使用中，很多时候调用接口会抛出400-500之间的错误，
+	此时可以通过它进行封装。
 
+一般情况下Ribbon的时间应短于Hystrix超时时间。
 
+Hystrix请求缓存：Hystrix的请求缓存是在同一个请求中进行，在进行第一次调用结束后对结果缓存，
+			然后接下来同参数的请求将会使用第一次的结果，缓冲的生命周期只是在一次请求中有效。
+	初始化请求上下文，
+		Hystrix的缓存在一次请求内有效，这要求请求要在一个Hystrix上下文里，可以使用filter过滤器或者interceptor拦截器初始化，
 
+$ cd $HOME
+$ mkdir config-repo
+$ cd config-repo
+$ git init .
+$ echo info.foo: bar > application.properties
+$ git add -A .
+$ git commit -m "Add application.properties"
 
-
-
-
-
+Zuul：
+	 在实际项目中我们往往会在网关层涉及鉴权，限流，动态路由，文件上传，参数转换，以及做其他逻辑与业务处理。
+	 Zuul的核心逻辑是有一系列紧密配合工作的Filter来实现的，他们能够在进行HTTP请求或者响应的时候执行相关操作。
+	 
+	 
 
 
 
