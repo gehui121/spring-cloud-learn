@@ -1,6 +1,6 @@
 package com.itwolf.api.service;
 
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.ResponseBase;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**

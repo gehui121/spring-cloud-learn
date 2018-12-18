@@ -12,11 +12,19 @@
     </parent>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.itwolf</groupId>
+            <artifactId>itwolf-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <!--Zuul网关-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+
+
     </dependencies>
 
     <build>

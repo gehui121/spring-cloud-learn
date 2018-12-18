@@ -1,7 +1,7 @@
 package com.itwolf.api.service;
 
 import com.itwolf.api.entity.UserEntity;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.ResponseBase;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 

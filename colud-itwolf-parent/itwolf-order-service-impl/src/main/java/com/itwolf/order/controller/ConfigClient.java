@@ -1,7 +1,7 @@
 package com.itwolf.order.controller;
 
-import com.itwolf.base.BaseApiService;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.BaseApiService;
+import com.itwolf.common.base.ResponseBase;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;

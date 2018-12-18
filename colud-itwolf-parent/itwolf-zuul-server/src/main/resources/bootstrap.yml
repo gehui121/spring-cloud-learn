@@ -1,23 +1,26 @@
 server:
   port: 50000
+  #tomcat的最大线程数
+  tomcat:
+    max-threads: 5
 spring:
   application:
     name: zuul-server
   cloud:
     config:
-    #读取的版本环境
+      #读取的版本环境
       profile: dev
       discovery:
-      #读取config-server环境
+        #读取config-server环境
         service-id: config-server
         #开启读取权限
         enabled: true
 eureka:
   instance:
-  ##使用ip注册
+    ##使用ip注册
     prefer-ip-address: true
     ##自定义实例编号
-    instance-id: ${spring.application.name}:${server.port}:@project.version@
+    instance-id: ${spring.application.name}:${server.port}
     ##客户端向注册中心发送心跳检测时间间隔
     lease-renewal-interval-in-seconds: 30
     ##客户端失效时间
@@ -28,19 +31,44 @@ eureka:
       defaultZone: http://api:node@server1:10001/eureka/,http://api:node@server2:10002/eureka/
 #请求处理的超时时间
 ribbon:
-  ReadTimeout: 5000
-#请求连接的超时时间
-  ConnectTimeout: 5000
-  #同一个服务重试的次数（除去首次）
-  MaxAutoRetries: 2
-  #切换相同服务数量
-  MaxAutoRetriesNextServer: 2
+#6秒ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1);
+  ReadTimeout: 1500
+  #请求连接的超时时间
+  ConnectTimeout: 1500
+  #重试机制
+  #对第一次请求的服务的重试次数
+  MaxAutoRetries: 1
+  #要重试的下一个服务的最大数量，（不包括第一个服务）
+  MaxAutoRetriesNextServer: 0
+  OkToRetryOnAllOperations: true
+  #开启饥饿加载，在启动时加载应用的上下文
+  eager-load:
+    enabled: true
+##开启Hystrix短路器
+feign:
+  hystrix:
+    enabled: true
+#1.默认：（方法上记得要加上@HystrixCommand，否则无效）：
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 7000
+#Circuit Breaker 设置打开fallback并启动fallback逻辑的错误比率,默认50
+hystrix.command.default.circuitBreaker.errorThresholdPercentage: 50
+#线程隔离时，线程池核心大小.默认值10
+hystrix.threadpool.default.coreSize: 9
+#最大线程池大小
+hystrix.threadpool.default.masimumSize: 6
+
+#2.配置具体方法的超时时间
+#hystrix.command.serverMethod.execution.isolation.thread.timeoutInMilliseconds=3000
+#开启actuator所有的检测端点，实时刷新配置文件
 #开启actuator所有的检测端点，实时刷新配置文件
 management:
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: hystrix.stream
+swagger:
+  base-package: com.itwolf.controller
+#默认连接的是rabbitMQ，
 zuul:
 #开启失败后的重试机制，配合ribbon使用
   retryable: true
@@ -56,6 +84,11 @@ zuul:
     pay-service:
       path: /api-pay/**
       serviceId: appConfig
-
+    user-service:
+      path: /api-user/**
+      serviceId: user-service
+    data-service:
+      path: /api-data/**
+      serviceId: data-service
 
 

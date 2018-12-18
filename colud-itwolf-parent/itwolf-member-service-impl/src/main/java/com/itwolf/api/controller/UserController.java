@@ -2,8 +2,8 @@ package com.itwolf.api.controller;
 
 import com.itwolf.api.entity.UserEntity;
 import com.itwolf.api.service.IUserService;
-import com.itwolf.base.BaseApiService;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.BaseApiService;
+import com.itwolf.common.base.ResponseBase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

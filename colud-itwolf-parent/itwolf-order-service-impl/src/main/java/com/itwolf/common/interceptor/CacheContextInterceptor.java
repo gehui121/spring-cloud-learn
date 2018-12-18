@@ -1,4 +1,4 @@
-package com.itwolf.interceptor;
+package com.itwolf.common.interceptor;
 
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
 import org.springframework.lang.Nullable;

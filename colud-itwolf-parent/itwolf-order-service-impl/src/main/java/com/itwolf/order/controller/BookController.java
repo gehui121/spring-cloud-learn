@@ -1,7 +1,7 @@
 package com.itwolf.order.controller;
 
-import com.itwolf.base.BaseApiService;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.BaseApiService;
+import com.itwolf.common.base.ResponseBase;
 import com.itwolf.feign.BookFeign;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;

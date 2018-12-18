@@ -1,4 +1,4 @@
-package com.itwolf.config;
+package com.itwolf.common.config;
 
 import org.springframework.context.annotation.Configuration;
 

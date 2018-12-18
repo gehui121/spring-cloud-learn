@@ -1,4 +1,4 @@
-package com.itwolf.base;
+package com.itwolf.common.base;
 
 import org.springframework.stereotype.Component;
 

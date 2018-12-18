@@ -1,4 +1,4 @@
-package com.itwolf.exception;
+package com.itwolf.common.exception;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.exception.HystrixBadRequestException;

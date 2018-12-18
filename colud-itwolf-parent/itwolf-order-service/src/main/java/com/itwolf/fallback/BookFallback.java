@@ -1,7 +1,7 @@
 package com.itwolf.fallback;
 
-import com.itwolf.base.BaseApiService;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.BaseApiService;
+import com.itwolf.common.base.ResponseBase;
 import com.itwolf.feign.BookFeign;
 import org.springframework.stereotype.Component;
 

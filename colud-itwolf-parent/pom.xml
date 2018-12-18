@@ -12,6 +12,9 @@
         <module>itwolf-api-service</module>
         <module>itwolf-member-service</module>
         <module>itwolf-order-service</module>
+        <module>itwolf-user-service</module>
+        <module>itwolf-user-service-impl</module>
+        <module>itwolf-data-service-impl</module>
         <module>itwolf-member-service-impl</module>
         <module>itwolf-order-service-impl</module>
         <module>itwolf-common</module>
@@ -131,6 +134,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
             <version>2.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
         </dependency>
 
         <!--整合Hystrix Dashboard -->

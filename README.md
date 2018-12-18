@@ -260,8 +260,10 @@ Zuul：
 	 
 	 
 
-
-
+新建用户服务，数据服务完成基础框架的联通
+	user-service
+	
+ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1);
 
 
 

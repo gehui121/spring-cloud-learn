@@ -7,11 +7,13 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+import com.itwolf.filter.AuthFilter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,14 @@ import java.util.List;
 @EnableEurekaClient
 @EnableZuulProxy
 @EnableSwagger2
-
 public class ZuulApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZuulApplication.class);
+    }
+
+    @Bean
+    public AuthFilter preRequestFilter() {
+        return new AuthFilter();
     }
 
     //zuul配置使用config实现实时刷新，
@@ -49,6 +55,8 @@ public class ZuulApplication {
             //api-order是zuul中配置的
             resources.add(swaggerResource("app-itwolf-order", "/api-order/v2/api-docs", "2.0"));
             resources.add(swaggerResource("app-itwolf-member", "/api-member/v2/api-docs", "2.0"));
+            resources.add(swaggerResource("app-itwolf-user", "/api-user/v2/api-docs", "2.0"));
+            resources.add(swaggerResource("app-itwolf-data", "/api-data/v2/api-docs", "2.0"));
             return resources;
         }
 

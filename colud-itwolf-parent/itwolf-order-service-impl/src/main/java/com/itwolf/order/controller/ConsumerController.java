@@ -1,7 +1,7 @@
 package com.itwolf.order.controller;
 
-import com.itwolf.base.BaseApiService;
-import com.itwolf.base.ResponseBase;
+import com.itwolf.common.base.BaseApiService;
+import com.itwolf.common.base.ResponseBase;
 import com.itwolf.feign.ProviderFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
