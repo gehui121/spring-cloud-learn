@@ -12,6 +12,8 @@
     </parent>
     <modules>
         <module>meite-shop-basics-springcloud-eureka</module>
+        <module>meite-shop-basics-springcloud-zull</module>
+        <module>meite-shop-basics-springcloud-zuul</module>
     </modules>
 
 
