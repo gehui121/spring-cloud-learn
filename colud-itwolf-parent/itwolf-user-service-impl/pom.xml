@@ -5,7 +5,7 @@
     <parent>
         <artifactId>colud-itwolf-parent</artifactId>
         <groupId>com.itwolf</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>v1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -16,7 +16,7 @@
         <dependency>
             <groupId>com.itwolf</groupId>
             <artifactId>itwolf-user-service</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>v1</version>
         </dependency>
     </dependencies>
 

@@ -7,7 +7,7 @@
     <groupId>com.itwolf</groupId>
     <artifactId>colud-itwolf-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>v1</version>
     <modules>
         <module>itwolf-api-service</module>
         <module>itwolf-member-service</module>
@@ -22,6 +22,7 @@
         <module>itwolf-pay-service-impl</module>
         <module>itwolf-hystrix-dashboard</module>
         <module>itwolf-turbine</module>
+        <module>itwolf-gateway-server</module>
     </modules>
 
     <parent>
@@ -39,6 +40,9 @@
         <spring-cloud.version>Finchley.SR1</spring-cloud.version>
         <swagger.version>1.7.0.RELEASE</swagger.version>
         <logstash.version>4.11</logstash.version>
+        <fastjson.version>1.2.47</fastjson.version>
+        <rabbit.version>2.0.2.RELEASE</rabbit.version>
+        <jjwt.version>0.7.0</jjwt.version>
     </properties>
 
     <!--加入微服务spring cloud依赖管理dependencyManagement子项目可以选择引用-->
@@ -50,6 +54,12 @@
                 <version>${spring-cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!--JWT依赖-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -133,13 +143,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
-            <version>2.0.2.RELEASE</version>
+            <version>${rabbit.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!--整合Hystrix Dashboard -->
@@ -150,7 +160,17 @@
 
     </dependencies>
 
-
+    <!--注意： 这里必须要添加，否则各种依赖有问题 -->
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/libs-milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>

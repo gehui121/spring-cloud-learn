@@ -32,8 +32,8 @@ public class UserService implements IUserService {
 
     @Override
     public List<String> getProviderData() {
-        String url = "http://data-service/getProviderData";
-        List list = (List<String>) restTemplate.getForObject(url,List.class);
-        return list;
+//        String url = "http://data-service/getProviderData";
+//        List list = (List<String>) restTemplate.getForObject(url,List.class);
+        return null;
     }
 }
