@@ -1,5 +1,6 @@
 package com.mayikt.weixin.service;
 
+import com.mayikt.base.BaseResponse;
 import com.mayikt.weixin.entity.APPEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,5 +23,5 @@ public interface WeiXinService {
     **/
     @ApiOperation("获取微信服务App信息")
     @GetMapping(value = "/getWeiXinApp")
-    APPEntity getApp();
+    BaseResponse<APPEntity> getApp();
 }

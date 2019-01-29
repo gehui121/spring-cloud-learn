@@ -11,6 +11,7 @@
         <module>meite-shop-service-api</module>
         <module>meite-shop-service-impl</module>
         <module>meite-shop-service-entitys-api</module>
+        <module>meite-shop-common</module>
     </modules>
     <packaging>pom</packaging>
 

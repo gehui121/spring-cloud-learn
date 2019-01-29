@@ -1,9 +1,9 @@
 package com.mayikt.member.service;
 
+import com.mayikt.base.BaseResponse;
 import com.mayikt.member.feign.WeiXinServiceFeign;
 import com.mayikt.weixin.entity.APPEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,8 +20,8 @@ public class MemberServiceImpl implements MemberService {
     private WeiXinServiceFeign weiXinServiceFeign;
 
     @Override
-    public APPEntity memberToWeiXin() {
-        APPEntity appEntity = weiXinServiceFeign.getApp();
-        return appEntity;
+    public BaseResponse<APPEntity> memberToWeiXin() {
+        BaseResponse<APPEntity> response = weiXinServiceFeign.getApp();
+        return response;
     }
 }

@@ -1,5 +1,6 @@
 package com.mayikt.member.service;
 
+import com.mayikt.base.BaseResponse;
 import com.mayikt.weixin.entity.APPEntity;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -22,5 +23,5 @@ public interface MemberService {
     **/
     @ApiOperation(value = "会员服务调用微信服务")
     @GetMapping(value = "/memberToWeiXin")
-    APPEntity memberToWeiXin();
+    BaseResponse<APPEntity> memberToWeiXin();
 }
